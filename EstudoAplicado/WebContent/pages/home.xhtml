@@ -4,41 +4,47 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
-<head>
-<title>Home_Estudo_Aplicado : LOGIN</title>
-</head>
+<h:head>
+	<title>Home_Estudo_Aplicado : LOGIN</title>
+</h:head>
 <body>
 	<h1>Home Estudo Aplicado</h1>
 	<h:form>
 		<h:outputText
 			value="Aqui na tag messages é apresentado todas as mensagem que estão nessa view:"></h:outputText>
-		<!-- Global Only utilizado para apresentar mensagem que não são de proprieades de nenhuma tag  -->
+		<!-- Global Only if true utilizado para apresentar mensagem que não são de proprieades de nenhuma tag  -->
 		<h:messages globalOnly="true"></h:messages>
-		<h:panelGrid border="2" columns="1">
+		<p:panelGrid columns="1" allign="center">
 			<f:facet name="header">
 				<h:outputText value="Login do usuário"></h:outputText>
 			</f:facet>
 			<h:outputLabel value="Login : ">
-				<h:inputText value="#{loginMB.nome}" 
-					required="true" id="idLogin"
-					requiredMessage="É Necessário preencher o campo de Login"></h:inputText>
-					<h:message for="idLogin"></h:message>
+				<p:inputText value="#{loginMB.nome}" required="true" id="idLogin"
+					requiredMessage="É Necessário preencher o campo de Login"></p:inputText>
+				<h:message for="idLogin"></h:message>
 			</h:outputLabel>
-			<h:panelGroup>
-				<h:outputLabel value="Senha : ">
-					<h:inputSecret value="#{loginMB.senha}"></h:inputSecret>
-				</h:outputLabel>
-				<h:outputText value="(Minimo de 6 caracteres)"></h:outputText>
-			</h:panelGroup>
-			<f:facet name="footer">
-				<h:commandButton value="Enviar" action="#{loginMB.executar}"></h:commandButton>
-			</f:facet>
+			<h:outputLabel value="Senha : ">
+				<p:password id="feedback" value="#{loginMB.senha}" />
+			</h:outputLabel>
+			<h:outputText value="(Minimo de 6 caracteres)"></h:outputText>
+			<h:commandButton value="Enviar" action="#{loginMB.executar}"></h:commandButton>
 			<h:outputLink value="http://www.google.com.br">
 				<h:outputText value="Pesquisar no Google"></h:outputText>
 			</h:outputLink>
-		</h:panelGrid>
+		</p:panelGrid>
+		<p:splitButton value="Save" actionListener="#{buttonView.save}"
+			update="messages" icon="ui-icon-disk">
+			<p:menuitem value="Update" actionListener="#{buttonView.update}"
+				update="messages" icon="ui-icon-arrowrefresh-1-w" />
+			<p:menuitem value="Delete" actionListener="#{buttonView.delete}"
+				ajax="false" icon="ui-icon-close" />
+			<p:separator />
+			<p:menuitem value="Homepage" url="http://www.primefaces.org"
+				icon="ui-icon-extlink" />
+		</p:splitButton>
 	</h:form>
 </body>
 </html>
