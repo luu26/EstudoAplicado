@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<head>
+<title>Home_Estudo_Aplicado : LOGIN</title>
+</head>
+<body>
+	<h1>Home Estudo Aplicado</h1>
+	<h:form>
+		<h:outputText
+			value="Aqui na tag messages é apresentado todas as mensagem que estão nessa view:"></h:outputText>
+		<!-- Global Only utilizado para apresentar mensagem que não são de proprieades de nenhuma tag  -->
+		<h:messages globalOnly="true"></h:messages>
+		<h:panelGrid border="2" columns="1">
+			<f:facet name="header">
+				<h:outputText value="Login do usuário"></h:outputText>
+			</f:facet>
+			<h:outputLabel value="Login : ">
+				<h:inputText value="#{loginMB.nome}" 
+					required="true" id="idLogin"
+					requiredMessage="É Necessário preencher o campo de Login"></h:inputText>
+					<h:message for="idLogin"></h:message>
+			</h:outputLabel>
+			<h:panelGroup>
+				<h:outputLabel value="Senha : ">
+					<h:inputSecret value="#{loginMB.senha}"></h:inputSecret>
+				</h:outputLabel>
+				<h:outputText value="(Minimo de 6 caracteres)"></h:outputText>
+			</h:panelGroup>
+			<f:facet name="footer">
+				<h:commandButton value="Enviar" action="#{loginMB.executar}"></h:commandButton>
+			</f:facet>
+			<h:outputLink value="http://www.google.com.br">
+				<h:outputText value="Pesquisar no Google"></h:outputText>
+			</h:outputLink>
+		</h:panelGrid>
+	</h:form>
+</body>
+</html>
