@@ -1,6 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -10,41 +7,24 @@
 <h:head>
 	<title>Home_Estudo_Aplicado : LOGIN</title>
 </h:head>
-<body>
-	<h1>Home Estudo Aplicado</h1>
-	<h:form>
-		<h:outputText
-			value="Aqui na tag messages é apresentado todas as mensagem que estão nessa view:"></h:outputText>
-		<!-- Global Only if true utilizado para apresentar mensagem que não são de proprieades de nenhuma tag  -->
-		<h:messages globalOnly="true"></h:messages>
-		<p:panelGrid columns="1" allign="center">
-			<f:facet name="header">
-				<h:outputText value="Login do usuário"></h:outputText>
-			</f:facet>
-			<h:outputLabel value="Login : ">
-				<p:inputText value="#{loginMB.nome}" required="true" id="idLogin"
-					requiredMessage="É Necessário preencher o campo de Login"></p:inputText>
-				<h:message for="idLogin"></h:message>
-			</h:outputLabel>
-			<h:outputLabel value="Senha : ">
-				<p:password id="feedback" value="#{loginMB.senha}" />
-			</h:outputLabel>
-			<h:outputText value="(Minimo de 6 caracteres)"></h:outputText>
-			<h:commandButton value="Enviar" action="#{loginMB.executar}"></h:commandButton>
-			<h:outputLink value="http://www.google.com.br">
-				<h:outputText value="Pesquisar no Google"></h:outputText>
-			</h:outputLink>
-		</p:panelGrid>
-		<p:splitButton value="Save" actionListener="#{buttonView.save}"
-			update="messages" icon="ui-icon-disk">
-			<p:menuitem value="Update" actionListener="#{buttonView.update}"
-				update="messages" icon="ui-icon-arrowrefresh-1-w" />
-			<p:menuitem value="Delete" actionListener="#{buttonView.delete}"
-				ajax="false" icon="ui-icon-close" />
-			<p:separator />
-			<p:menuitem value="Homepage" url="http://www.primefaces.org"
-				icon="ui-icon-extlink" />
-		</p:splitButton>
-	</h:form>
-</body>
+<h:body>
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="north" size="110">
+			<ui:include src="menu.xhtml"></ui:include>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="south" size="100">
+			<div align="center">
+				<h:outputText value="Todos os Direitos Reservados"></h:outputText>
+			</div>
+		</p:layoutUnit>
+		<p:layoutUnit position="center">
+			<div align="center">
+				<h1>Bem vindo ao Sistema!</h1>
+			</div>
+		</p:layoutUnit>
+
+	</p:layout>
+</h:body>
 </html>
